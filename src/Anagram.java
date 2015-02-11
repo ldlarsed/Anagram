@@ -3,14 +3,16 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
- * Controller class.
+ * Anagram.java Controller class.
  * 
- * @author luke
+ * @author Lukas Larsed
  *
  */
 public class Anagram {
 
 	private GUI gui;
+	private Set<String> words;
+	private AnagramFinder aFinder;
 
 	public Anagram() {
 
@@ -22,22 +24,29 @@ public class Anagram {
 			public void actionPerformed(ActionType at, Object obj) {
 				switch (at) {
 				case SEARCH:
-					new AnagramFinder();
+					if (words == null || words.isEmpty())
+						gui.showMessage(Strings._errorMessage1);
+					else {
+						aFinder = new AnagramFinder(words);
+						gui.showOutput(aFinder.findAnagrams());
+					}
 					break;
 				case READ_FILE:
 					File f = (File) obj;
-					Set<String> words = FileLoader.loadFile(f);
+					words = FileLoader.loadFile(f);
 					showFileContents(words);
+					break;
 				}
 			}
 		});
 	}
-	
-	private void showFileContents(Set<String> words){
+
+	private void showFileContents(Set<String> words) {
 		StringBuilder sb = new StringBuilder();
 		Iterator<String> i = words.iterator();
-		while(i.hasNext())
+		while (i.hasNext())
 			sb.append(i.next()).append("\n");
+		sb.append(Strings._fileLoadMessage);
 		gui.showOutput(sb.toString());
 	}
 

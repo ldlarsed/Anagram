@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -118,6 +119,10 @@ public class GUI extends JFrame {
 	public void showOutput(String output){
 		textA_output.setText(output);
 	}
+	
+	public void showMessage(String msg){
+		JOptionPane.showMessageDialog(null, msg);
+	}
 
 	private void setPath(String path) {
 		txtF_file_path.setText(path);
@@ -130,7 +135,7 @@ public class GUI extends JFrame {
 	private JFrame thisClass() {
 		return this;
 	}
-
+	
 	private class GuiListener implements ActionListener {
 
 		@Override

@@ -17,4 +17,19 @@ public class Strings {
 	public static final String _pathSTD = "./anagrams/";
 
 	public static final String _aboutTxt = "<html><br><br><b>Author</b><br>Lukas Larsed<br><a href='mailto:lukas.larsed@gmail.com'>lukas.larsed@gmail.com</a><br><a href='http://github.com/ldlarsed'>http://github.com/ldlarsed</a><br><br> Finds the one-word anagrams in selected text file.</html>";
+	public static final String _fileLoadMessage = "\nFile is loaded. Click SEARCH to find anagrams";
+	public static final String _errorMessage1 = "Please select a file first";
+
+	/**
+	 * For ruled based collator
+	 * Source: http://docs.oracle.com/javase/8/docs/api/java/text/RuleBasedCollator.html
+	 */
+	public static final String _nbCollatorRule = "< a, A < b, B < c, C < d, D < e, E < f, F < g, G < h, H < i, I"
+			+ "< j, J < k, K < l, L < m, M < n, N < o, O < p, P < q, Q < r, R"
+			+ "< s, S < t, T < u, U < v, V < w, W < x, X < y, Y < z, Z"
+			+ "< \u00E6, \u00C6" + // Latin letter ae & AE
+			"< \u00F8, \u00D8" + // Latin letter o & O with stroke
+			"< \u00E5 = a\u030A," + // Latin letter a with ring above
+			"  \u00C5 = A\u030A;" + // Latin letter A with ring above
+			"  aa, AA";
 }
