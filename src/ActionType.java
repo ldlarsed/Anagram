@@ -1,4 +1,4 @@
 
 public enum ActionType {
-	SEARCH;
+	SEARCH, READ_FILE;
 }

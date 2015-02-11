@@ -36,6 +36,7 @@ public class GUI extends JFrame {
 	private JTextArea textA_output;
 
 	private GuiListener listener;
+	private AnagramAction anagramAction;
 
 	public GUI() {
 		super(Strings._title);
@@ -99,6 +100,7 @@ public class GUI extends JFrame {
 		aboutMenuItem.addActionListener(listener);
 		btn_file_open.addActionListener(listener);
 		btn_close.addActionListener(listener);
+		btn_search.addActionListener(listener);
 
 		// JFrame
 		this.add(p_wrapper);
@@ -107,6 +109,14 @@ public class GUI extends JFrame {
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	public void setAnagramAction(AnagramAction anagramAction) {
+		this.anagramAction = anagramAction;
+	}
+	
+	public void showOutput(String output){
+		textA_output.setText(output);
 	}
 
 	private void setPath(String path) {
@@ -134,11 +144,13 @@ public class GUI extends JFrame {
 				fc.setFileFilter(filter);
 				fc.showOpenDialog(null);
 				setPath(fc.getSelectedFile().getPath());
-			} else if (source == btn_close || source == quitMenuItem) {
+				anagramAction.actionPerformed(ActionType.READ_FILE, fc.getSelectedFile());
+			} else if (source == btn_close || source == quitMenuItem)
 				exit();
-			} else if (source == aboutMenuItem) {
+			else if (source == aboutMenuItem)
 				new About(thisClass());
-			}
+			else if (source == btn_search)
+				anagramAction.actionPerformed(ActionType.SEARCH, null);
 		}
 	}
 
