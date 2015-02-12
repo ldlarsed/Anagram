@@ -47,5 +47,5 @@ Løsningen bygger på bruk av egenskaper til forskjellige datastrukturer og coll
 * **Const** Sentral repository av konstanter.
 
 ##Screenshots
-![ScreenShot1](./s1.png)
-![ScreenShot2](-/s2.png)
+![ScreenShot1](./screenshots/s1.png)
+![ScreenShot2](-/screenshots/s2.png)
