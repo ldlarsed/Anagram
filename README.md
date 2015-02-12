@@ -19,8 +19,9 @@ I foldern finnes det følgende:
 * **screenshots** Screenshots over gui. 
 * **uml** Et uml klassediagram over programstrukturen.
 
-##Algoritme og dastastrukturer
+##Algoritmer og dastastrukturer
 Løsningen bygger på bruk av egenskaper til forskjellige datastrukturer og collections enn spesifikk algoritme for å finne anagrammer. Anagrammene blir funnet gjennnom følgende tilnærmingsmåte: 
+
 1. En textfil med et-ord anagrammer lastes inn til en `Set<String>`. 
 
 2. De inleste filene i `Set<String>` blir lagt i en `Map<String, Integer>` der integer verdien er en hashverdi av nøkkelsn (ordet) i en leksinografik rekkefølge (a-å). Slik beholdes det originale ordet i form av an nøkkel. Dette gjør at alle anagrammer kommer til å ha samme hash verdi i map strukturen. 
@@ -35,3 +36,16 @@ Løsningen bygger på bruk av egenskaper til forskjellige datastrukturer og coll
 
 ##Klassestruktur
 ![UML_klassediagram](./UML/UML_class_diagram.png)
+* **Anagram** Main klasse og kontroller.
+* **GUI** GUI klasse i Java Swing. 
+* **FileLoader** Hjelpeklasse for lasting av tekstifler. 
+* **AnagramFinder** Model klassen (business logic).
+* **WordHashPair** Generisk datatype som brukes til sortering av anagramer. 
+* **AnagramAction** interface brukt til observer pattern mellom GUI og controller klassene.
+* **ActionType** Enum type brukt definisjoner av forskjellige "user actions".
+* **Strings** Sentral string repository.
+* **Const** Sentral repository av konstanter.
+
+##Screenshots
+![ScreenShot1](./s1.png)
+![ScreenShot2](-/s2.png)
