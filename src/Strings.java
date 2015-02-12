@@ -16,7 +16,7 @@ public class Strings {
 	public static final String _menHelp = "Help";
 	public static final String _menAbout = "About";
 
-	public static final String _pathSTD = "./anagrams/";
+	public static final String _pathSTD = "./";
 
 	public static final String _aboutTxt = "<html><br><br><b>Author</b><br>Lukas Larsed<br><a href='mailto:lukas.larsed@gmail.com'>lukas.larsed@gmail.com</a><br><a href='http://github.com/ldlarsed'>http://github.com/ldlarsed</a><br><br> Finds the one-word anagrams in selected text file.</html>";
 	public static final String _fileLoadMessage = "\nFile is loaded. Click SEARCH to find anagrams";
