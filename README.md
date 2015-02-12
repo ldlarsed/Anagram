@@ -22,8 +22,11 @@ I foldern finnes det følgende:
 ##Algoritme og dastastrukturer
 Løsningen bygger på bruk av egenskaper til forskjellige datastrukturer og collections enn spesifikk algoritme for å finne anagrammer. Anagrammene blir funnet gjennnom følgende tilnærmingsmåte: 
 1. En textfil med et-ord anagrammer lastes inn til en `Set<String>`. 
+
 2. De inleste filene i `Set<String>` blir lagt i en `Map<String, Integer>` der integer verdien er en hashverdi av nøkkelsn (ordet) i en leksinografik rekkefølge (a-å). Slik beholdes det originale ordet i form av an nøkkel. Dette gjør at alle anagrammer kommer til å ha samme hash verdi i map strukturen. 
+
 3. Alle par i mappen legges over i en custom datastruktur med egen komparator med hensikt å sortere disse etter den loksinografiske hash verdien. Det medfører at alle anagrammer kan nå leges over i en `ArrayList<WordHashPair<String, Integer>>` og sorteres etter sin verdi. Nå ligger alle anagramer intil hverandre. 
+
 4. Anagramene hentes ut fra listen basert på lik verdi. 
 
 ##Patterns
