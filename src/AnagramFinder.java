@@ -13,6 +13,7 @@ public class AnagramFinder {
 
 	private SortedMap<String, Integer> sortedWords;
 	private Set<String> words;
+	private int anagramCounter;
 
 	public AnagramFinder(Set<String> words) {
 		this.words = words;
@@ -23,28 +24,46 @@ public class AnagramFinder {
 		return presentAnagrams();
 	}
 
+	public int getAnagramCounter() {
+		return anagramCounter;
+	}
+
 	/**
-	 * Collects all the possible anagrams in the map by comparing hashed values.
+	 * Stores a pair of String and Integer in a ArrayList to sort these by the
+	 * integer value. Since two anagrams have the same integer hash they will be
+	 * placed next to each other in the ArrayList structure.
 	 * 
 	 * @return
 	 */
 	private String presentAnagrams() {
 		StringBuilder sb = new StringBuilder();
-		ArrayList<WordHashPair<String, Integer>> anagramList = new ArrayList<WordHashPair<String,Integer>>(); 
-				
+		ArrayList<WordHashPair<String, Integer>> anagramList = new ArrayList<WordHashPair<String, Integer>>();
+
 		for (Map.Entry<String, Integer> entry : sortedWords.entrySet()) {
 			anagramList.add(new WordHashPair<String, Integer>(entry.getKey(),
 					entry.getValue()));
 		}
-		
+
 		Collections.sort(anagramList);
 		Iterator<WordHashPair<String, Integer>> it = anagramList.iterator();
-		
-		while(it.hasNext()){
+		int i = 0, prevV = 0, currentV = 0;
+
+		while (it.hasNext()) {
+			if (i > 0) {
+				prevV = currentV;
+			}
 			WordHashPair<String, Integer> tmp = it.next();
-			sb.append(tmp.getK()).append(tmp.getV()).append("\n");
+			currentV = tmp.getV();
+			if (i > 0 && currentV != prevV) {
+				sb.append("\n");
+				i=0;
+			} 
+			sb.append(tmp.getK()).append(" ");
+			i++;
+			if(i>1)
+				anagramCounter+=i;
 		}
-		
+
 		return sb.toString();
 	}
 
@@ -77,7 +96,7 @@ public class AnagramFinder {
 		Arrays.sort(sort);
 		String sortedString = Arrays.toString(sort);
 		int hashOfSortedString = sortedString.hashCode();
-//		System.out.println(sortedString + " " + hashOfSortedString);
+		// System.out.println(sortedString + " " + hashOfSortedString);
 		return hashOfSortedString;
 	}
 

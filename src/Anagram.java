@@ -29,12 +29,14 @@ public class Anagram {
 					else {
 						aFinder = new AnagramFinder(words);
 						gui.showOutput(aFinder.findAnagrams());
+						gui.setAnagramCounter(aFinder.getAnagramCounter());
 					}
 					break;
 				case READ_FILE:
 					File f = (File) obj;
 					words = FileLoader.loadFile(f);
 					showFileContents(words);
+					gui.setWordCounter(words.size());
 					break;
 				}
 			}

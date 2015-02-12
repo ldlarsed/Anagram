@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -28,7 +29,7 @@ public class GUI extends JFrame {
 
 	private JTextField txtF_file_path;
 	private JButton btn_file_open, btn_search, btn_close;
-	private JLabel lbl_counter;
+	private JLabel lbl_angCounter, lbl_wordCounter, lbl_word, lbl_ang;
 	private JScrollPane scroll;
 
 	private JPanel p_menu_panel, p_file_panel, p_counter_panel,
@@ -57,11 +58,23 @@ public class GUI extends JFrame {
 		txtF_file_path = new JTextField(Const.txtF_size);
 		txtF_file_path.setEditable(false);
 		btn_file_open = new JButton(Strings._btnBrowse);
-		lbl_counter = new JLabel("0");
-		lbl_counter.setHorizontalAlignment(JLabel.CENTER);
-		Font lbl_font = lbl_counter.getFont();
-		lbl_counter.setFont(new Font(lbl_font.getName(), Font.PLAIN, 20));
+
+		lbl_angCounter = new JLabel("0");
+		lbl_wordCounter = new JLabel("0");
+		lbl_ang = new JLabel(Strings._lbl_ang);
+		lbl_word = new JLabel(Strings._lbl_word);
+
+		lbl_angCounter.setHorizontalAlignment(JLabel.LEFT);
+		lbl_wordCounter.setHorizontalAlignment(JLabel.LEFT);
+		lbl_ang.setHorizontalAlignment(JLabel.CENTER);
+		lbl_word.setHorizontalAlignment(JLabel.CENTER);
+
+		Font lbl_font = lbl_angCounter.getFont();
+		lbl_angCounter.setFont(new Font(lbl_font.getName(), Font.PLAIN, 20));
+		lbl_wordCounter.setFont(new Font(lbl_font.getName(), Font.PLAIN, 20));
+
 		textA_output = new JTextArea(20, 20);
+		textA_output.setEditable(false);
 		textA_output.setBorder(new TitledBorder(Strings._output));
 		scroll = new JScrollPane(textA_output);
 		btn_search = new JButton(Strings._btnSearch);
@@ -76,9 +89,12 @@ public class GUI extends JFrame {
 		p_file_panel.add(txtF_file_path, BorderLayout.LINE_START);
 		p_file_panel.add(btn_file_open, BorderLayout.EAST);
 
-		p_counter_panel = new JPanel(new BorderLayout());
+		p_counter_panel = new JPanel(new GridLayout(1, 4));
 		p_counter_panel.setBorder(new TitledBorder(Strings._count));
-		p_counter_panel.add(lbl_counter, BorderLayout.CENTER);
+		p_counter_panel.add(lbl_word);
+		p_counter_panel.add(lbl_wordCounter);
+		p_counter_panel.add(lbl_ang);
+		p_counter_panel.add(lbl_angCounter);
 
 		p_component_panel = new JPanel(new BorderLayout());
 		p_component_panel.add(p_menu_panel, BorderLayout.NORTH);
@@ -115,13 +131,21 @@ public class GUI extends JFrame {
 	public void setAnagramAction(AnagramAction anagramAction) {
 		this.anagramAction = anagramAction;
 	}
-	
-	public void showOutput(String output){
+
+	public void showOutput(String output) {
 		textA_output.setText(output);
 	}
-	
-	public void showMessage(String msg){
+
+	public void showMessage(String msg) {
 		JOptionPane.showMessageDialog(null, msg);
+	}
+	
+	public void setWordCounter(int c){
+		lbl_wordCounter.setText(String.valueOf(c));
+	}
+	
+	public void setAnagramCounter(int c){
+		lbl_angCounter.setText(String.valueOf(c));
 	}
 
 	private void setPath(String path) {
@@ -135,7 +159,7 @@ public class GUI extends JFrame {
 	private JFrame thisClass() {
 		return this;
 	}
-	
+
 	private class GuiListener implements ActionListener {
 
 		@Override
@@ -147,9 +171,14 @@ public class GUI extends JFrame {
 						"Text files", "txt");
 				JFileChooser fc = new JFileChooser(Strings._pathSTD);
 				fc.setFileFilter(filter);
-				fc.showOpenDialog(null);
-				setPath(fc.getSelectedFile().getPath());
-				anagramAction.actionPerformed(ActionType.READ_FILE, fc.getSelectedFile());
+				int fc_status = fc.showOpenDialog(null);
+				if (fc_status == JFileChooser.APPROVE_OPTION) {
+					setPath(fc.getSelectedFile().getPath());
+					anagramAction.actionPerformed(ActionType.READ_FILE,
+							fc.getSelectedFile());
+				} else {
+					txtF_file_path.setText(Strings._errorMessage2);
+				}
 			} else if (source == btn_close || source == quitMenuItem)
 				exit();
 			else if (source == aboutMenuItem)

@@ -8,6 +8,8 @@ public class Strings {
 	public static final String _btnSearch = "Search";
 	public static final String _btnClose = "Close";
 	public static final String _OK = "OK";
+	public static final String _lbl_word = "Words";
+	public static final String _lbl_ang = "Anagrams";
 
 	public static final String _menFile = "File";
 	public static final String _menQuit = "Quit";
@@ -19,6 +21,7 @@ public class Strings {
 	public static final String _aboutTxt = "<html><br><br><b>Author</b><br>Lukas Larsed<br><a href='mailto:lukas.larsed@gmail.com'>lukas.larsed@gmail.com</a><br><a href='http://github.com/ldlarsed'>http://github.com/ldlarsed</a><br><br> Finds the one-word anagrams in selected text file.</html>";
 	public static final String _fileLoadMessage = "\nFile is loaded. Click SEARCH to find anagrams";
 	public static final String _errorMessage1 = "Please select a file first";
+	public static final String _errorMessage2 = "Please choose a file...";
 
 	/**
 	 * For ruled based collator
