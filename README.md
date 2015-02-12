@@ -48,4 +48,4 @@ Løsningen bygger på bruk av egenskaper til forskjellige datastrukturer og coll
 
 ##Screenshots
 ![ScreenShot1](./screenshots/s1.png)
-![ScreenShot2](-/screenshots/s2.png)
+![ScreenShot2](./screenshots/s2.png)
