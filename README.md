@@ -1,17 +1,17 @@
-Anagram finder
+Anagram finder (student-project)
 =================
 
-##Teknologi
-Programmet er lagd i Java SE 1.8
-Det medfølger en .project fil for enkel import av prosjektet til Eclipse IDE.
+## Teknologi
+- Java SE 1.8
+- En `.project` fil medfølger for enkel import av prosjektet til Eclipse IDE.
 
-##Kompilering
-`./src/Anagram.java` innholder `main()`, standasrd kompilering med `javac`. 
+## Build
+`./src/Anagram.java` innholder `main()`, bygges med `javac`
 
-##Binærer
+## Binærer
 En `jar` pakke medfølger i `./jar`, kompilert og testet med JDK på Fedora 21.
 
-##Mappestruktur
+## Mappestruktur
 I foldern finnes det følgende:
 * **src** All kildekode til progreammet i Java filer.
 * **jar** Prekompilert jar fil og sh script som starter programmet. Bør fungere på de fleste Linus/BSD ditribusjoner som har JRE 1.8 installert og eventuel Mac OS (ikke testet).
@@ -19,8 +19,9 @@ I foldern finnes det følgende:
 * **screenshots** Screenshots over gui. 
 * **uml** Et uml klassediagram over programstrukturen.
 
-##Algoritmer og dastastrukturer
-Løsningen bygger på bruk av egenskaper til forskjellige datastrukturer og collections enn spesifikk algoritme for å finne anagrammer. Anagrammene blir funnet gjennnom følgende tilnærmingsmåte: 
+## Algoritmer og dastastrukturer
+
+Anagrammene indetifiseres gjennom: 
 
 1. En textfil med et-ord anagrammer lastes inn til en `Set<String>`. 
 
@@ -30,11 +31,11 @@ Løsningen bygger på bruk av egenskaper til forskjellige datastrukturer og coll
 
 4. Anagramene hentes ut fra listen basert på lik verdi. 
 
-##Patterns
+## Patterns
 * **Architectural** Programmet bygger på *model view controller* pattern.
 * **Design** Det brukes en enkel observer pattern for å lytte til hendelser (actions) fra gui.
 
-##Klassestruktur
+## Klassestruktur
 ![UML_klassediagram](./UML/UML_class_diagram.png)
 * **Anagram** Main klasse og kontroller.
 * **GUI** GUI klasse i Java Swing. 
@@ -46,6 +47,6 @@ Løsningen bygger på bruk av egenskaper til forskjellige datastrukturer og coll
 * **Strings** Sentral string repository.
 * **Const** Sentral repository av konstanter.
 
-##Screenshots
+## Screenshots
 ![ScreenShot1](./screenshots/s1.png)
 ![ScreenShot2](./screenshots/s2.png)
